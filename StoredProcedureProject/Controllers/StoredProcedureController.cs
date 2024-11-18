@@ -49,9 +49,6 @@ namespace StoredProcedureProject.Controllers
             return Ok(Result);
         }
 
-
-
-
         /// <summary>
         ///  استفاده از 
         ///  ExecuteSqlInterpolated
@@ -71,9 +68,6 @@ namespace StoredProcedureProject.Controllers
 
             return Ok(Result);
         }
-
-
-
 
         /// <summary>
         /// تعریف 
@@ -125,6 +119,23 @@ namespace StoredProcedureProject.Controllers
             // بازگشت تعداد سفارشات
             return Ok(orderCount);
         }
+
+
+        /// <summary>
+        /// استفاده از
+        /// UnitOfWork
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Get005")]
+        public async Task<IActionResult> Get5()
+        {
+            var products = await _unitOfWork.ProductRepository.GetProductsByCategoryAsync("Electronics");
+
+            var result = string.Join(", ", products.Select(p => $"Name: {p.Name}, Price: {p.Price}"));
+
+            return Ok(result);
+        }
+
 
 
 

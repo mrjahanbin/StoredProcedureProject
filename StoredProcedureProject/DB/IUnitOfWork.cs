@@ -4,7 +4,7 @@ namespace StoredProcedureProject.DB
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<Product> ProductRepository { get; }
+        IProductRepository ProductRepository { get; }
         Task CommitAsync();
         Task CommitTransactionAsync();
         Task BeginTransactionAsync();

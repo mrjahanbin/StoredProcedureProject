@@ -8,16 +8,16 @@ namespace StoredProcedureProject.DB
         private readonly ApplicationDbContext _context;
         private IDbContextTransaction _transaction;
 
+
         // Constructors for the UnitOfWork class.
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        private Repository<Product> _productRepository;
+        private ProductRepository _productRepository;
+        public IProductRepository ProductRepository => _productRepository ??= new(_context);
 
-        // Repositories initialization via lazy loading.
-        public IRepository<Product> ProductRepository => _productRepository ??= new Repository<Product>(_context);
 
         // Dispose method to release resources (including the context and transaction).
         public void Dispose()
