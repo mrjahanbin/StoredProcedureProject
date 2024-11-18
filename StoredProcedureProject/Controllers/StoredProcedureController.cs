@@ -38,12 +38,9 @@ namespace StoredProcedureProject.Controllers
                 .FromSqlInterpolated($"EXEC GetProductsByCategory {category}")
                 .ToListAsync();
 
-
-
-
             foreach (var product in products)
             {
-                Result += $"Name: {product.Name}, Price: {product.Price}";
+                Result += $"Name: {product.Name}, Price: {product.Price} ";
             }
 
             return Ok(Result);
@@ -92,7 +89,6 @@ namespace StoredProcedureProject.Controllers
             return Ok(Result);
         }
 
-
         /// <summary>
         /// اضافه کردن پارامترهای ورودی/خروجی
         /// </summary>
@@ -120,7 +116,6 @@ namespace StoredProcedureProject.Controllers
             return Ok(orderCount);
         }
 
-
         /// <summary>
         /// استفاده از
         /// UnitOfWork
@@ -135,10 +130,5 @@ namespace StoredProcedureProject.Controllers
 
             return Ok(result);
         }
-
-
-
-
-
     }
 }
